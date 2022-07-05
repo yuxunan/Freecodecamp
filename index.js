@@ -209,3 +209,40 @@ const createPerson = (name, age, gender) => {
   };
   // change code above this line
 };
+
+
+class Thermostat {
+  constructor(fahrenheit) {
+    this.fahrenheit = fahrenheit;
+  }
+  
+  get temperature() {
+    return (5 / 9) * (this.fahrenheit - 32);
+  }
+  
+  set temperature(celsius) {
+    this.fahrenheit = (celsius * 9.0) / 5 + 32;
+  }
+}
+
+ import { uppercaseString, lowercaseString} from './string_functions.js';
+// Only change code above this line
+
+uppercaseString("hello");
+lowercaseString("WORLD!");
+
+const makeServerRequest = new Promise((resolve, reject) => {
+
+})
+
+
+const makeServerRequest = new Promise((resolve, reject) => {
+  // responseFromServer represents a response from a server
+  let responseFromServer;
+    
+  if(responseFromServer) {
+    resolve("We got the data");// Change this line
+  } else {  
+    reject("Data not received");// Change this line
+  }
+});
