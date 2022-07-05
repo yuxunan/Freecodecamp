@@ -92,3 +92,26 @@ const lastName = "Lovelace";
 
 // Only change code below this line
 lastNameLength = lastName.length;
+
+
+function rangeOfNumbers(startNum, endNum) {
+  if (endNum - startNum === 0) {
+    return [startNum];
+  } else {
+    var numbers = rangeOfNumbers(startNum, endNum - 1);
+    numbers.push(endNum);
+    return numbers;
+  }
+}
+
+function checkScope() {
+  'use strict';
+  let i = 'function scope';
+  if (true) {
+    let i = 'block scope';
+    console.log('Block scope i is: ', i);
+  }
+ 
+  console.log('Function scope i is: ', i);
+  return i;
+}
