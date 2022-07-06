@@ -246,3 +246,34 @@ const makeServerRequest = new Promise((resolve, reject) => {
     reject("Data not received");// Change this line
   }
 });
+
+
+function quickCheck(arr, elem) {
+  // change code below this line
+  if (arr.indexOf(elem) >= 0) {
+    return true;
+  } else {
+    return false;
+  }
+  // change code above this line
+}
+
+// change code here to test different cases:
+console.log(quickCheck(['squash', 'onions', 'shallots'], 'mushrooms'));
+
+
+function filteredArray(arr, elem) {
+let newArr = [];
+// Only change code below this line
+for(let i=0;i<arr.length;i++){
+  if(arr[i].indexOf(elem) ==-1){
+    newArr.push(arr[i])
+  }
+}
+// Only change code above this line
+return newArr;
+}
+
+console.log(filteredArray([[3, 2, 3], [1, 6, 3], [3, 13, 26], [19, 3, 9]], 3));
+
+
