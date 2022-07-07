@@ -514,6 +514,34 @@ function repeatStringNumTimes(str, num) {
 repeatStringNumTimes("abc", 3);
 
 
+et dog = {
+  name: "Spot",
+  numLegs: 4,
+  sayLegs: function() {return "This dog has " + this.numLegs + " legs.";}
+};
+
+dog.sayLegs();
+
+
+
+
+function Dog(){
+  this.name = "fwef";
+  this.color = "wef";
+  this.numLegs = 4;
+}
+
+
+function Dog() {
+  this.name = "Rupert";
+  this.color = "brown";
+  this.numLegs = 4;
+}
+
+let hound = new Dog();
+// Only change code below this line
+
+
 
 
 
