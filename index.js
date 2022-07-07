@@ -543,6 +543,52 @@ let hound = new Dog();
 
 
 
+function Dog(name, color){
+  this.name = name;
+  this.color = color;
+  this.numLegs = 4;
+}
+let terrier = new Dog("ef", "color");
+
+
+
+function House(numBedrooms) {
+  this.numBedrooms = numBedrooms;
+}
+let myHouse = new House(5);
+myHouse instanceof House;
+// Only change code below this line
+
+
+function Bird(name) {
+  this.name = name;
+  this.numLegs = 2;
+}
+
+let canary = new Bird("Tweety");
+let ownProps = [];
+// Add your code below this line
+for (let property in canary) {
+  if (canary.hasOwnProperty(property)) {
+    ownProps.push(property);
+  }
+}
+
+
+function Dog(name) {
+  this.name = name;
+
+}
+
+Dog.prototype.numLegs = 2;
+
+// Only change code above this line
+let beagle = new Dog("Snoopy");
+
+
+
+
+
 
 
 
