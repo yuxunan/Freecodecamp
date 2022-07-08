@@ -707,6 +707,13 @@ Animal.prototype = {
 };
 
 
-
+const arr = [
+    { id: 'item1', name: 'TV', price: 13500 },
+    { id: 'item2', name: 'washing machine', price: 8200 },
+    { id: 'item3', name: 'laptop', price: 25000 },
+];
+arr.forEach((element, index) => {
+  console.log(element.name);
+});
 
 
