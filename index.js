@@ -742,4 +742,22 @@ arr.forEach(item => {
 });
 
 
+const arr = [
+    { id: 'item1', name: 'TV', price: 13500, vip: false },
+    { id: 'item2', name: 'washing machine', price: 8200, vip: false },
+    { id: 'item3', name: 'laptop', price: 25000, vip: false },
+    { id: 'item4', name: 'vip product', price: 99999, vip: true },
+];
+const isUserVip = false;
+
+// ...
+
+return arr
+        .filter(item => isUserVip || !item.vip)
+        .map(item => (
+            <div key={item.id} >
+                <div>{item.name}</div>
+                <div>{item.price}</div>
+            </div>
+        ));
 
