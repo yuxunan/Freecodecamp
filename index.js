@@ -717,3 +717,18 @@ arr.forEach((element, index) => {
 });
 
 
+const arr = [
+    { id: 'item1', name: 'TV', price: 13500 },
+    { id: 'item2', name: 'washing machine', price: 8200 },
+    { id: 'item3', name: 'laptop', price: 25000 },
+];
+arr.forEach((element, index) => {
+  if (element.price < 10000) {
+      return;
+  }
+  // 只會印出大於 10000 元的東西
+  console.log(element.name);
+});
+
+
+
