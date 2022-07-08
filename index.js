@@ -730,5 +730,16 @@ arr.forEach((element, index) => {
   console.log(element.name);
 });
 
+const arr = [
+    { id: 'item1', name: 'TV', price: 13500 },
+    { id: 'item2', name: 'washing machine' },
+    { id: 'item3', name: 'laptop', price: 25000 }
+];
+
+arr.forEach(item => {
+    const discountPrice = item.price * 0.8;
+    console.log(`${item.name}：${discountPrice}`);
+});
+
 
 
