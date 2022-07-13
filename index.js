@@ -842,3 +842,9 @@ var arr2 = arr.filter(function(element) {
   return element < 3;
 });
 console.log(arr2);     // [1, 2]
+
+var arr = [1, 2, 3];
+var sum = arr.reduce(function(accumulator, currentValue) {
+  return accumulator += currentValue;
+});
+console.log(sum);    // 6
