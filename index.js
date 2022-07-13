@@ -829,3 +829,10 @@ var arr = [1, 2, 3];
 arr.forEach(function(element) {
   console.log(element);    // 1 2 3
 });
+
+var arr = [1, 2, 3];
+var arr2 = arr.map(function(element) {
+  return element * 2;
+});
+console.log(arr);    // [1, 2, 3]
+console.log(arr2);   // [2, 4, 6]
