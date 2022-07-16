@@ -914,3 +914,27 @@ geocode(<地點>, (error, { longitude, latitude, location } = {}) => {
   if (error) { return console.log(error) }
   console.log(`longitude is ${longitude}, & latitude is ${latitude}`)
 })
+
+// 向 mapbox 伺服器發送請求獲得「洛杉磯」的座標資料
+const geoUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=<API_KEY>&limit=1`
+
+// 只取回傳 respone 中的 body 並自動編譯成 JSON 格式
+request({ url: geoUrl, json: true }, (error, { body }) => {
+  // 回傳錯誤訊息
+  if (error) { return console.log(error) }
+  const longitude = features[0].center[0]
+  const latitude = features[0].center[1]
+
+  // 在獲得座標資訊後，發出請求來求得天氣資訊
+  const forecastUrl = `https://api.darksky.net/forecast/<API_KEY>/${latitude},${longitude}?units=si`
+  request({ url: forecastUrl, json: true }, (error, { body = forecastBody }) => {
+    if (error) { return callback('Unable to connect to weather server', undefined) }
+    console.log(forecastBody.daily.data[0].summary)
+
+    // 在獲得天氣資訊的回傳，再發一個請求做別的事
+    request({ url: anotherUrl, json: true }, (error, { body = anotherBody }) => {
+      if (error) { return callback('Unable to connect to weather server', undefined) }
+      console.log(anotherBody.daily.data[0].summary)
+    })
+  })
+})
