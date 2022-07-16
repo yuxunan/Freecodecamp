@@ -848,3 +848,37 @@ var sum = arr.reduce(function(accumulator, currentValue) {
   return accumulator += currentValue;
 });
 console.log(sum);    // 6
+
+const getAsyncInfoA = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(Date.now());
+    }, 3000);  
+  });
+}
+const getAsyncInfoB = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(Date.now());
+    }, 2000);  
+  });
+}
+
+const getInfoAB = async() => {
+  const initTimeStamp = Date.now();
+
+  try {
+    const resInfoA = await getAsyncInfoA();
+    // 待 await 完成後，才繼續執行下行
+    // 待 resInfoA 回傳後，才印出結果和請求 infoB 資料
+    console.log(resInfoA - initTimeStamp);  // 3002
+
+    const resInfoB = await getAsyncInfoB();
+    // 待 resInfoB 回傳後，才印出結果
+    console.log(resInfoB - initTimeStamp);  // 5007
+  } catch(err) {
+    console.log(err);
+  }
+}
+
+getInfoAB();
