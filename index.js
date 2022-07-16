@@ -888,3 +888,29 @@ async function asyncActionsAndReturnPromise() {
   const response = await executeAsyncRequestFunc();
   console.log(response);
 }
+
+const geocode = (address, callback) => {
+  // 地點將隨帶入的參數變化
+  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${API_KEY}&limit=1`
+
+  request({ url, json: true }, (error, { body }) => {
+     // 如果回傳錯誤訊息，呼叫 callback function() 並帶入錯誤訊息，資料欄位為空
+    if (error) { return callback('Unable to connect to location services', undefined) }
+    // 如果找不到資料，呼叫 callback function() 並帶入錯誤訊息，資料欄位為空
+    if (body.features.length === 0) { return callback('Unable to find this location, try again!', undefined) }
+    // 如果有找到資料，呼叫 callback function()，並帶入資料，錯誤訊息欄位為空
+    const { features } = body
+    callback(undefined, {
+      longitude: features[0].center[0],
+      latitude: features[0].center[1],
+      location: features[0].place_name
+    })
+  })
+}
+
+// 呼叫 geocode()，參數一：搜尋地點 / 參數二：回傳資料後執行的 callback function
+geocode(<地點>, (error, { longitude, latitude, location } = {}) => {
+  // 收到資料被呼叫時，執行接下來客製化的動作
+  if (error) { return console.log(error) }
+  console.log(`longitude is ${longitude}, & latitude is ${latitude}`)
+})
