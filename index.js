@@ -882,3 +882,9 @@ const getInfoAB = async() => {
 }
 
 getInfoAB();
+
+
+async function asyncActionsAndReturnPromise() {
+  const response = await executeAsyncRequestFunc();
+  console.log(response);
+}
